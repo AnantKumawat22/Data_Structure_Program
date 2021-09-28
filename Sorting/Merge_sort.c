@@ -14,7 +14,7 @@ void printArray(int arr[], int n)
 void merge(int arr[], int low, int mid, int high)
 {
     int i, j, k;
-    int brr[100];
+    long long brr[200000];
     i = low;
     j = mid + 1;
     k = low;
@@ -41,7 +41,7 @@ void merge(int arr[], int low, int mid, int high)
         brr[k] = arr[j];
         j++;k++;
     }
-    for(i = 0; i < high; i++)
+    for(i = low; i <= high; i++)
     {
         arr[i] = brr[i];
     }
@@ -61,14 +61,14 @@ void merge_sort(int arr[], int low, int high)
 
 void main()
 {
-    int arr[] = {12, 1, 3, 4, 6, 4}, n, i;
+    int arr[100], n, i;
     printf("Enter number of elements you want to enter in the array.");
     scanf("%d", &n);
-    // for (i = 0; i < n; i++)
-    // {
-    //     printf("Enter value at arr[%d]: ", i);
-    //     scanf("%d", &arr[i]);
-    // }
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter value at arr[%d]: ", i);
+        scanf("%d", &arr[i]);
+    }
     printf("Original array:\n");
     printArray(arr, n);
 
