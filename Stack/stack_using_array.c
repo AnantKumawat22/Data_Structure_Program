@@ -46,7 +46,7 @@ struct Stack *pop(struct Stack *s)
     return s;
 }
 
-void *peek(struct Stack *s)
+void peek(struct Stack *s)
 {
     printf("\nPeek -> %d ", s->arr[s->top]);
 }
@@ -73,24 +73,15 @@ void main()
         switch (ch)
         {
         case 1:
-            if (isFull(st))
-            {
-                st = push(st);
-            }
+            if (isFull(st)) st = push(st);
             break;
         case 2:
-            if (isEmpty(st))
-            {
-                st = pop(st);
-            }
+            if (isEmpty(st)) st = pop(st);
             break;
         case 3:
-            if (isEmpty(st))
-            {
-                peek(st);
-            }
+            if (isEmpty(st)) peek(st);
             break;
-        case 5:
+        case 4:
             exit(0);
         }
         getch();
