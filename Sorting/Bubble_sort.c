@@ -37,7 +37,7 @@ void bubble_sort(int arr[], int n)
 void main()
 {
     int arr[100], n, i;
-    printf("Enter number of array you want to enter in the array.");
+    printf("Enter number of elements you want to enter in the array.");
     scanf("%d",&n);
     for(i = 0; i < n; i++)
     {

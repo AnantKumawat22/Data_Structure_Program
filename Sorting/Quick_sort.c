@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 
-int partition(int [], int, int);
+int partition(int[], int, int);
 void printArray(int arr[], int n)
 {
     int i;
@@ -12,7 +12,16 @@ void printArray(int arr[], int n)
     printf("\n");
 }
 
+void swap(int *Ai, int *Aj)
+{
+    int temp;
+    temp = *Ai;
+    *Ai = *Aj;
+    *Aj = temp;
+}
+
 // First element is pivot.
+
 int partition(int arr[], int low, int high)
 {
     int i = low + 1, temp;
@@ -32,78 +41,77 @@ int partition(int arr[], int low, int high)
 
         if (i < j)
         {
-            temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+            swap(&arr[i], &arr[j]);
         }
     } while (i < j);
 
-    temp = arr[j];
-    arr[j] = arr[low];
-    arr[low] = temp;
+    swap(&arr[j], &arr[low]);
     return j;
 }
 
-void quick_sort(int arr[], int low, int high)
+//Short time complexity.
+
+// int partition(int arr[], int low, int high)
+// {
+//     int pivot = arr[low];
+//     int i = low;
+//     for (int j = low + 1; j <= high; j++)
+//     {
+//         if (pivot >= arr[j])
+//         {
+//             i++;
+//             swap(&arr[i], &arr[j]);
+//         }
+//     }
+//     swap(&arr[i], &arr[low]);
+//     return i;
+// }
+
+// Last element is pivot.(Error -> Correct the Code !!)
+
+// int partition(int arr[], int low, int high)
+// {
+//     // Your code here
+//     int i, j, temp, pivot;
+
+//     i = low;
+//     pivot = arr[high];
+//     j = high - 1;
+
+//     do
+//     {
+//         while (arr[i] < pivot)
+//         {
+//             i++;
+//         }
+//         while (pivot < arr[j])
+//         {
+//             j--;
+//         }
+//         if (i < j)
+//         {
+//             swap(&arr[i], &arr[j]);
+//         }
+
+//     } while (i < j);
+
+//     swap(&arr[j - 1], &arr[high]);
+
+//     return (j);
+// }
+
+
+
+void quickSort(int arr[], int low, int high)
 {
     int partitionindex;
     if (low < high)
     {
         partitionindex = partition(arr, low, high);
-        quick_sort(arr, low, partitionindex - 1);
-        quick_sort(arr, partitionindex + 1, high);
+        quickSort(arr, low, partitionindex - 1);
+        quickSort(arr, partitionindex + 1, high);
     }
 }
-
-// Last element is pivot.
-
-// void quickSort(int arr[], int low, int high)
-// {
-//     // code here
-//     int partind;
-//     if(low < high)
-//     {
-//         partind = partition(arr, low, high);
-//         quickSort(arr, low, partind - 1);
-//         quickSort(arr, partind + 1, high);
-//     }
-// }
-    
-// int partition (int arr[], int low, int high)
-// {
-//    // Your code here
-//    int i, j, temp, pivot;
-   
-//    i = low;
-//    pivot = arr[high];
-//    j = high - 1;
-   
-//    do
-//    {
-//        while(arr[i] < pivot)
-//        {
-//            i++;
-//        }
-//        while(pivot < arr[j])
-//        {
-//            j--;
-//        }
-//        if(i < j)
-//        {
-//            temp = arr[j];
-//            arr[j] = arr[i];
-//            arr[i] = temp;
-//        }
-       
-//    }while(i < j);
-   
-//    temp = arr[high];
-//    arr[high] = arr[j + 1];
-//    arr[j + 1] = temp;
-   
-//    return (j+1);
-// }
-
 
 void main()
 {
